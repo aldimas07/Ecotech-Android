@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ResultActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBar"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:navigationIcon="@drawable/ic_arrow_left"
+            app:title="Hasil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="40dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_true"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/centang" />
+
+            <TextView
+                android:id="@+id/tv_hasil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="Tidak Bisa Didaur Ulang"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_perintah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:text="Sampah tidak bisa didaur ulang. Silahkan pisahkan sampahnya!"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu Utama"
+            android:id="@+id/btn_menu_utama"
+            android:paddingHorizontal="20dp"
+            android:textAllCaps="false"
+            android:stateListAnimator="@null"
+            android:textColor="@color/textColorPrimaryInverse"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:background="@drawable/button_login"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lihat Lokasi"
+            android:id="@+id/btn_lokasi"
+            android:paddingHorizontal="20dp"
+            android:textAllCaps="false"
+            android:stateListAnimator="@null"
+            android:textColor="@color/textColorPrimaryInverse"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:background="@drawable/button_login"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

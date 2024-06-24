@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/ecotech_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/ecotech_logo" />
+
+        <TextView
+            android:id="@+id/text_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="70dp"
+            android:text="SIGN UP"
+            android:textColor="?colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/user_nama"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/textfield_bg"
+            android:hint="Nama"
+            android:importantForAutofill="yes"
+            android:textColor="@color/textColorPrimary"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/textColorSecondary"
+            android:inputType="textPersonName"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/edt_email_register"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/textfield_bg"
+            android:hint="Email"
+            android:importantForAutofill="yes"
+            android:textColor="@color/textColorPrimary"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/textColorSecondary"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/edt_password_register"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/textfield_bg"
+            android:hint="Password"
+            android:importantForAutofill="yes"
+            android:textColor="@color/textColorPrimary"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/textColorSecondary"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/confirm_password"
+            android:background="@drawable/textfield_bg"
+            android:hint="Konfirmasi Password"
+            android:importantForAutofill="yes"
+            android:textColor="@color/textColorPrimary"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/textColorSecondary"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            style="@style/ButtonMain"
+            app:backgroundTint="?colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:stateListAnimator="@null"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Sudah punya akun? "
+            android:textColor="@color/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/text_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Login"
+            android:textColor="?colorAccent" />
+    </LinearLayout>
+
+</LinearLayout>

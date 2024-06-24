@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/ecotech_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/ecotech_logo" />
+
+        <TextView
+            android:id="@+id/text_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="70dp"
+            android:text="SIGN IN"
+            android:textColor="?colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/textfield_bg"
+            android:hint="@string/email"
+            android:importantForAutofill="yes"
+            android:textColor="@color/textColorPrimary"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/textColorSecondary"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/edt_password_login"
+            android:background="@drawable/textfield_bg"
+            android:hint="@string/password_login"
+            android:importantForAutofill="yes"
+            android:textColor="@color/textColorPrimary"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/textColorSecondary"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/ButtonMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            app:backgroundTint="?colorAccent"
+            android:text="@string/masuk"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/atau_masuk_dengan"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/google_logo" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/belum_punya_akun"
+            android:textColor="@color/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/text_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="?colorAccent" />
+    </LinearLayout>
+
+</LinearLayout>
