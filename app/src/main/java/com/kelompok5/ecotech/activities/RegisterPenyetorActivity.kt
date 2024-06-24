@@ -12,7 +12,7 @@ import com.kelompok5.ecotech.databinding.ActivityRegisterPenyetorBinding
 import com.kelompok5.ecotech.viewmodel.AuthViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterPenyetorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterPenyetorBinding
     private val authViewModel: AuthViewModel by viewModel()

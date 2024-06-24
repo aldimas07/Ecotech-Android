@@ -86,7 +86,7 @@
             android:name=".activities.AccountInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name=".activities.RegisterPenyetorActivity"
             android:exported="false" />
 
         <provider

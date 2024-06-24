@@ -35,7 +35,7 @@ class AccountInfoActivity : AppCompatActivity() {
                         putString("password", null)
                         apply()
                     }
-                    val intent = Intent(this@AccountInfoActivity, RegisterActivity::class.java)
+                    val intent = Intent(this@AccountInfoActivity, RegisterPenyetorActivity::class.java)
                     startActivity(intent)
                     finish()
                     true
