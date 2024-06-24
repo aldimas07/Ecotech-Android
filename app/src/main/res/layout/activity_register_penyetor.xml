@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="40dp"
         android:layout_weight="1"
         android:gravity="center"
@@ -22,15 +22,28 @@
             android:layout_height="70dp"
             app:srcCompat="@drawable/ecotech_logo" />
 
-        <TextView
-            android:id="@+id/text_sign_up"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="70dp"
-            android:text="SIGN UP"
-            android:textColor="?colorAccent"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="70dp">
+            <TextView
+                android:id="@+id/text_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/buatakunsebagai"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/penyetor"
+                android:textSize="20sp"
+                android:layout_marginStart="6dp"
+                android:textColor="?colorAccent"/>
+
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/user_nama"
@@ -93,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:stateListAnimator="@null"
-            android:text="@string/register"
+            android:text="@string/daftar"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -109,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Sudah punya akun? "
+            android:text="@string/sudahpunyaakun"
             android:textColor="@color/textColorPrimary" />
 
         <TextView
@@ -118,7 +131,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="Login"
+            android:text="@string/masuk"
             android:textColor="?colorAccent" />
     </LinearLayout>
 

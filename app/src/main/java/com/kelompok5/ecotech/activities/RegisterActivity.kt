@@ -8,18 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kelompok5.ecotech.EcotechApp
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
-import com.kelompok5.ecotech.databinding.ActivityRegisterBinding
+import com.kelompok5.ecotech.databinding.ActivityRegisterPenyetorBinding
 import com.kelompok5.ecotech.viewmodel.AuthViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var binding: ActivityRegisterPenyetorBinding
     private val authViewModel: AuthViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityRegisterPenyetorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (checkSharedPrefForAutoLogin()) {
