@@ -24,7 +24,7 @@
     </queries>
 
     <application
-        android:name=".EcotechApp"
+        android:name="com.kelompok5.ecotech.EcotechApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -34,7 +34,10 @@
         android:theme="@style/Theme.EcoTech"
         tools:targetApi="31">
         <activity
-            android:name=".activities.LupaPasswordActivity"
+            android:name="com.kelompok5.ecotech.activities.EmailTerkirimLupaPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.kelompok5.ecotech.activities.LupaPasswordActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -52,26 +55,26 @@
             android:value="AIzaSyB2zro5gOs2On_GW4ZUzY2c-InEfw-YV1w" />
 
         <activity
-            android:name=".activities.MapsActivity"
+            android:name="com.kelompok5.ecotech.activities.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.kelompok5.ecotech.activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.kelompok5.ecotech.activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LocationActivity"
+            android:name="com.kelompok5.ecotech.activities.LocationActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ResultActivity"
+            android:name="com.kelompok5.ecotech.activities.ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AccountInfoActivity"
+            android:name="com.kelompok5.ecotech.activities.AccountInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name="com.kelompok5.ecotech.activities.RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,7 +85,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.irhamsoetomo.ecotech"
+            android:authorities="com.kelompok5.ecotech"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace 'com.irhamsoetomo.ecotech'
+    namespace 'com.kelompok5.ecotech'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.irhamsoetomo.ecotech"
+        applicationId "com.kelompok5.ecotech"
         minSdk 21
         targetSdk 33
         versionCode 1
