@@ -27,10 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="70dp"
-            android:text="SIGN IN"
-            android:textColor="?colorAccent"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="Masuk"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edt_email_login"
@@ -102,7 +101,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:gravity="center"
-            android:text="Register"
+            android:text="@string/daftaronlogin"
             android:textColor="?colorAccent"
             android:textStyle="bold" />
     </LinearLayout>
