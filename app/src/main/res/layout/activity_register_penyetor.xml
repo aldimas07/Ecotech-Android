@@ -42,7 +42,6 @@
                 android:layout_marginStart="6dp"
                 android:textColor="?colorAccent"/>
 
-
         </LinearLayout>
 
         <EditText

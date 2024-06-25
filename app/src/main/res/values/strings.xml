@@ -41,4 +41,8 @@
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="logout">Logout</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="kolektor_welcome">Perusahaan atau perseorangan yang akan mengumpulkan e-waste dari penyetor</string>
+    <string name="penyetor_welcome">Kamu dapat menyerahkan e-waste milikmu kepada kolektor</string>
+    <string name="welcome_ecotech">Selamat datang di Ecotech!</string>
+    <string name="welcome_pilihperan">Mau jadi penyetor e-waste atau sebagai kolektornya? Pilih peranmu sekarang!</string>
 </resources>
