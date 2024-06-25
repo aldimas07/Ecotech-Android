@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:stateListAnimator="@null"
-            android:text="@string/daftar"
+            android:text="@string/daftaronregister"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />
