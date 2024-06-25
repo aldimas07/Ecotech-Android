@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.textRegister.setOnClickListener {
-            finish()
+            startActivity(Intent(this, WelcomeActivity::class.java))
         }
         binding.tvLupaPassword.setOnClickListener {
             val intent = Intent(this, LupaPasswordActivity::class.java)

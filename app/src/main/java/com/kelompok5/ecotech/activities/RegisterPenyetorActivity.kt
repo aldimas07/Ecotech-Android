@@ -30,10 +30,10 @@ class RegisterPenyetorActivity : AppCompatActivity() {
         observeRegister()
 
         binding.btnRegister.setOnClickListener {
-            val name = binding.userNama.text.toString()
-            val email = binding.edtEmailRegister.text.toString()
-            val password = binding.edtPasswordRegister.text.toString()
-            val confirmPassword = binding.confirmPassword.text.toString()
+            val name = binding.userNamaPenyetor.text.toString()
+            val email = binding.edtEmailRegisterPenyetor.text.toString()
+            val password = binding.edtPasswordRegisterPenyetor.text.toString()
+            val confirmPassword = binding.confirmPasswordPenyetor.text.toString()
 
             if (password == confirmPassword) {
                 val registerRequestBody = RegisterRequestBody(name, email, password, confirmPassword)
