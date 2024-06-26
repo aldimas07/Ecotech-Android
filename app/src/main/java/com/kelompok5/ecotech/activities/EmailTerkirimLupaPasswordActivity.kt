@@ -1,5 +1,6 @@
 package com.kelompok5.ecotech.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kelompok5.ecotech.databinding.ActivityEmailTerkirimLupaPasswordBinding
@@ -12,7 +13,8 @@ class EmailTerkirimLupaPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnKembaliEmailterkirim.setOnClickListener {
-            finish()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finishAffinity()
         }
     }
 }
