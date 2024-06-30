@@ -19,7 +19,7 @@ object RetrofitClient {
     private val retrofitBuilder = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
     val retrofit: Retrofit = retrofitBuilder
-        .baseUrl("https://backend-dot-capstone-project-c23-ps236.et.r.appspot.com/v1/")
+        .baseUrl("https://ecotech-api-production.up.railway.app/v1/")
         .client(clientBuilder.build())
         .build()
 
