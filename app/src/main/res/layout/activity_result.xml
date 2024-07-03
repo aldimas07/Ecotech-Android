@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:text="Tidak Bisa Didaur Ulang"
+                android:text="Bisa Didaur Ulang"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="60dp"
-                android:text="Sampah tidak bisa didaur ulang. Silahkan pisahkan sampahnya!"
+                android:text="YAY! Sampah bisa didaur ulang. Yuk, kumpulkan ke pengepulan terdekat!"
                 android:textAlignment="center"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="18sp" />
