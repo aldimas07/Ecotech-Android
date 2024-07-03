@@ -22,7 +22,7 @@ class ResultActivity : AppCompatActivity() {
             binding.tvHasil.text = "Bisa Didaur Ulang"
             binding.tvPerintah.text = "Sampah bisa didaur ulang. Silahkan berikan ke pengepulan terdekat"
             binding.btnLokasi.setOnClickListener {
-                startActivity(Intent(Intent(this, MapsActivity::class.java)))
+                startActivity(Intent(Intent(this, ListKolektorActivity::class.java)))
             }
         } else {
             binding.ivTrue.setImageResource(R.drawable.close)
