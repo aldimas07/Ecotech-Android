@@ -2,6 +2,7 @@ package com.kelompok5.ecotech.data.repository
 
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
+import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
@@ -14,6 +15,10 @@ class EcotechRepository(
 ) {
     suspend fun registerUser(registerRequestBody: RegisterRequestBody) : Response<RegisterResponse> {
         return apiService.registerUser(registerRequestBody)
+    }
+
+    suspend fun registerUserKolektor(registerUserKolektorRequestBody: RegisterUserKolektorRequestBody) : Response<RegisterResponse> {
+        return apiService.registerUserKolektor(registerUserKolektorRequestBody)
     }
 
     suspend fun loginUser(loginUserRequestBody: LoginRequestBody) : Response<LoginResponse> {

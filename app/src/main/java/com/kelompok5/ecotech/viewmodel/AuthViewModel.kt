@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
+import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
 import com.kelompok5.ecotech.data.repository.EcotechRepository
@@ -25,6 +26,9 @@ class AuthViewModel(
 
     private val _registerUser = MutableLiveData<RegisterResponse?>()
     val registerUser: LiveData<RegisterResponse?> = _registerUser
+
+    private val _registerUserKolektor = MutableLiveData<RegisterResponse?>()
+    val registerUserKolektor: LiveData<RegisterResponse?> = _registerUserKolektor
 
     private val _loginUser = MutableLiveData<LoginResponse?>()
     val loginUser: LiveData<LoginResponse?> = _loginUser
@@ -83,6 +87,31 @@ class AuthViewModel(
                     }
                 }
             }.onFailure { e ->
+                withContext(Dispatchers.Main) {
+                    _errorMessage.value = e.message
+                }
+            }.also {
+                withContext(Dispatchers.Main) {
+                    _isLoading.postValue(false)
+                }
+            }
+        }
+    }
+
+    fun registerUserKolektor(registerKolektorRequestBody: RegisterUserKolektorRequestBody) {
+        _isLoading.postValue(true)
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                ecotechRepository.registerUserKolektor(registerKolektorRequestBody)
+            }.onSuccess { response ->
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        _registerUserKolektor.value = response.body()
+                    } else {
+                        handleRegistrationError(response)
+                    }
+                }
+                }.onFailure { e ->
                 withContext(Dispatchers.Main) {
                     _errorMessage.value = e.message
                 }

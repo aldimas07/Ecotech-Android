@@ -2,6 +2,7 @@ package com.kelompok5.ecotech.data.remote
 
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
+import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
@@ -17,6 +18,11 @@ interface ApiService {
     @POST("auth/register")
     suspend fun registerUser(
         @Body body: RegisterRequestBody
+    ): Response<RegisterResponse>
+
+    @POST("auth/registerkolektor")
+    suspend fun registerUserKolektor(
+        @Body body: RegisterUserKolektorRequestBody
     ): Response<RegisterResponse>
 
     @POST("auth/login")

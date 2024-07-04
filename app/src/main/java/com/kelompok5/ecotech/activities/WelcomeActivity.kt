@@ -21,7 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.cvKolektor.setOnClickListener {
-            val intent = Intent(this, HomeKolektorActivity::class.java)
+            val intent = Intent(this, RegisterKolektorActivity::class.java)
             startActivity(intent)
         }
     }
