@@ -8,6 +8,13 @@ data class LoginResponse(
     val message: String,
     @SerializedName("statusCode")
     val statusCode: Int,
-    @SerializedName("token")
-    val token: String
-)
+    @SerializedName("data")
+    val data: userData,
+) {
+    data class userData(
+        val name: String,
+        val email: String,
+        val roleid: Int,
+        val accessToken: String,
+    )
+}
