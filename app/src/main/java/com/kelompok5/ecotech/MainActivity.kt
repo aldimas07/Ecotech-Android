@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
-    override fun onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            toast.cancel()
-            super.onBackPressed()
-            finishAffinity()
-        } else {
-            toast = Toast.makeText(this, "Ketuk sekali lagi untuk keluar dari aplikasi!", Toast.LENGTH_SHORT)
-            toast.show()
-        }
-        backPressedTime = System.currentTimeMillis()
-    }
+//    override fun onBackPressed() {
+//        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+//            toast.cancel()
+//            super.onBackPressed()
+//            finishAffinity()
+//        } else {
+//            toast = Toast.makeText(this, "Ketuk sekali lagi untuk keluar dari aplikasi!", Toast.LENGTH_SHORT)
+//            toast.show()
+//        }
+//        backPressedTime = System.currentTimeMillis()
+//    }
 }

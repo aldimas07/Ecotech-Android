@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
     private var getFile: File? = null
     private var getUri: Uri? = null
 
+    private var backPressedTime: Long = 0
+    private lateinit var toast : Toast
+
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -212,5 +215,17 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            toast.cancel()
+            super.onBackPressed()
+            finishAffinity()
+        } else {
+            toast = Toast.makeText(this, "Ketuk sekali lagi untuk keluar dari aplikasi!", Toast.LENGTH_SHORT)
+            toast.show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 }

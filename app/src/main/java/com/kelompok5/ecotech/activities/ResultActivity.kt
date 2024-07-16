@@ -26,7 +26,7 @@ class ResultActivity : AppCompatActivity() {
 
         if (prediction == "This is an e-waste, you can send it to the collector!") {
             binding.tvHasil.text = "Bisa Didaur Ulang"
-            binding.tvPerintah.text = "YAY! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
+            binding.tvPerintah.text = "YaY! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
             binding.btnLokasi.setOnClickListener {
                 startActivity(Intent(Intent(this, ListKolektorActivity::class.java)))
             }
