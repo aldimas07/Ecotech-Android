@@ -2,15 +2,19 @@ package com.kelompok5.ecotech.activities
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kelompok5.ecotech.R
 import com.kelompok5.ecotech.adapter.AdapterListKolektor
-import com.kelompok5.ecotech.model.KolektorModel
+import com.kelompok5.ecotech.data.model.response.kolektor.allKolektor
+import com.kelompok5.ecotech.data.remote.ApiService
+import com.kelompok5.ecotech.data.remote.RetrofitClient
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ListKolektorActivity : AppCompatActivity(), AdapterListKolektor.OnItemClickListener {
 
@@ -24,19 +28,36 @@ class ListKolektorActivity : AppCompatActivity(), AdapterListKolektor.OnItemClic
         recyclerView = findViewById(R.id.recyclerViewKolektor)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val kolektorList = listOf(
-            KolektorModel("PT. Best Profit Futures", "Malang"),
-            KolektorModel("Agen e-waste RJ Surabaya", "Wonorejo, Rungkut, Surabaya"),
-            KolektorModel("Bank Sampah Kosahi", "Jl. Perusahaan, Gg. III No.26, Losawi, Tanjungtirto, Kec. Singosari, Kabupaten Malang, Jawa Timur 65153")
-        )
-
-        adapter = AdapterListKolektor(kolektorList, this)
+        adapter = AdapterListKolektor(mutableListOf(), this)
         recyclerView.adapter = adapter
+
+        fetchData()
     }
 
-    override fun onItemClick(kolektor: KolektorModel) {
+    override fun onItemClick(kolektor: allKolektor) {
         val intent = Intent(this, DetailKolektorActivity::class.java)
         intent.putExtra("kolektor", kolektor)
         startActivity(intent)
+    }
+
+    private fun fetchData() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val apiService = RetrofitClient.createService<ApiService>()
+            try {
+                val response = apiService.getAllKolektor()
+                Log.d("ListKolektorActivity", "Respond received: $response")
+                withContext(Dispatchers.Main) {
+                    Log.d("ListKolektorActivity", "Data received: ${response.data}")
+                    if (response.data.isNotEmpty()) {
+                        adapter.updateData(response.data)
+                    } else {
+                        Log.d("ListKolektorActivity", "No data received")
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e("ListKolektorActivity", "Error fetching data", e)
+            }
+        }
     }
 }

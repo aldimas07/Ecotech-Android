@@ -1,20 +1,27 @@
 package com.kelompok5.ecotech.data.remote
 
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
+import com.kelompok5.ecotech.data.model.request.OrdersEwasteRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
+import com.kelompok5.ecotech.data.model.response.kolektor.GetAllKolektorResponse
+import com.kelompok5.ecotech.data.model.response.kolektor.allKolektor
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.logout.LogoutResponse
+import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -42,4 +49,14 @@ interface ApiService {
     suspend fun predict(
         @Part file: MultipartBody.Part,
     ): Response<PredictResponse>
+
+    @GET("kolektor")
+    suspend fun getAllKolektor(
+    ): GetAllKolektorResponse
+
+//    @POST("submitewaste")
+//    suspend fun createOrdersEwaste(
+//        @Body body: OrdersEwasteRequestBody
+//    ): Response<OrdersEwasteResponse>
+//
 }

@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="60dp"
-                android:text="YAY! Sampah bisa didaur ulang. Yuk, kumpulkan ke pengepulan terdekat!"
+                android:text="Yay! Sampah bisa didaur ulang. Yuk, kumpulkan ke pengepulan terdekat!"
                 android:textAlignment="center"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="18sp" />

@@ -82,6 +82,9 @@ class AccountInfoActivity : AppCompatActivity() {
                 }
             } else {
                 Toast.makeText(this@AccountInfoActivity, "Token not found", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@AccountInfoActivity, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
         }
     }

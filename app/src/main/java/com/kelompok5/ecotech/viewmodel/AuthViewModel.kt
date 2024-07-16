@@ -1,10 +1,12 @@
 package com.kelompok5.ecotech.viewmodel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kelompok5.ecotech.EcotechApp
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
@@ -133,6 +135,15 @@ class AuthViewModel(
                     if (response.isSuccessful) {
                         _loginUser.value = response.body()
                         _email.value = loginUserRequestBody.email.split("@")[0]
+//                        response.body()?.let {
+//                            val sharedPref = EcotechApp.context.getSharedPreferences("ecoTechPref", Context.MODE_PRIVATE)
+//                            with(sharedPref.edit()) {
+//                                putString("email", loginUserRequestBody.email)
+//                                putString("roleid", it.roleid.toString())
+//                                putString("token", it.token)
+//                                apply()
+//                            }
+//                        }
                     } else {
                         handleLoginError(response)
                     }

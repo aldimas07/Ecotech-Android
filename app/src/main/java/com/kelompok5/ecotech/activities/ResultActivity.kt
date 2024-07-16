@@ -15,6 +15,12 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        binding.tvHasil.text = "Bisa Didaur Ulang"
+//        binding.tvPerintah.text = "YAY! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
+//        binding.btnLokasi.setOnClickListener {
+//            startActivity(Intent(Intent(this, ListKolektorActivity::class.java)))
+//        }
+
         val prediction = intent.getStringExtra(EXTRA_PREDICT)
 
 

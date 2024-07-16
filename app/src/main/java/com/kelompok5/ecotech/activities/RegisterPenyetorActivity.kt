@@ -76,4 +76,9 @@ class RegisterPenyetorActivity : AppCompatActivity() {
             true
         } else false
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, WelcomeActivity::class.java))
+        finish()
+    }
 }

@@ -21,11 +21,6 @@ class RegisterKolektorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterKolektorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if(checkSharedPrefForAutoLogin()) {
-            startActivity(Intent(this, HomeKolektorActivity::class.java))
-            finish()
-        }
         observeRegister()
 
         binding.btnRegisterKolektor.setOnClickListener{
@@ -36,9 +31,16 @@ class RegisterKolektorActivity : AppCompatActivity() {
             val password = binding.edtPasswordRegisterKolektor.text.toString()
             val confirmPassword = binding.confirmPasswordKolektor.text.toString()
 
+            if (name.isEmpty() || email.isEmpty() || alamat.isEmpty() || nohp.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(this, "Lengkapi data dengan benar", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if (password == confirmPassword) {
                 val registerKolektorRequestBody = RegisterUserKolektorRequestBody(name,email,alamat,nohp,password,confirmPassword)
                 authViewModel.registerUserKolektor(registerKolektorRequestBody)
+            } else {
+                Toast.makeText(this, "Password tidak cocok", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -68,15 +70,10 @@ class RegisterKolektorActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkSharedPrefForAutoLogin(): Boolean {
-        val sharedPref = EcotechApp.context.getSharedPreferences("ecoTechPref", Context.MODE_PRIVATE)
-        val email = sharedPref.getString("email", null)
-        val password = sharedPref.getString("password", null)
-
-        return if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
-            authViewModel.loginUser(LoginRequestBody(email, password)) //Assuming you have this method in your ViewModel
-            true
-        } else false
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, WelcomeActivity::class.java))
+        finish()
     }
 }
 

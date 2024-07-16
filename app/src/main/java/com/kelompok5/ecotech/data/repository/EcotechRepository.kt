@@ -1,14 +1,18 @@
 package com.kelompok5.ecotech.data.repository
 
 import com.kelompok5.ecotech.data.model.request.LoginRequestBody
+import com.kelompok5.ecotech.data.model.request.OrdersEwasteRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterRequestBody
 import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
+import com.kelompok5.ecotech.data.model.response.kolektor.GetAllKolektorResponse
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.logout.LogoutResponse
+import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
 import com.kelompok5.ecotech.data.remote.ApiService
 import okhttp3.MultipartBody
+import retrofit2.Call
 import retrofit2.Response
 
 class EcotechRepository(
@@ -33,5 +37,10 @@ class EcotechRepository(
     suspend fun logoutUser(token: String): Response<LogoutResponse> {
         return apiService.logoutUser("Bearer $token")
     }
+    suspend fun getAllKolektor() = apiService.getAllKolektor()
+//
+//    suspend fun createOrdersEwaste(ordersEwasteRequestBody: OrdersEwasteRequestBody): Response<OrdersEwasteResponse> {
+//        return apiService.createOrdersEwaste(ordersEwasteRequestBody)
+//    }
 
 }
