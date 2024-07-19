@@ -7,8 +7,8 @@ import com.kelompok5.ecotech.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var backPressedTime: Long = 0
-    private lateinit var toast : Toast
+//    private var backPressedTime: Long = 0
+//    private lateinit var toast : Toast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -23,10 +23,17 @@ class DataStoreManager private constructor(private val dataStore: DataStore<Pref
                 INSTANCE ?: DataStoreManager(context.dataStore).also { INSTANCE = it }
             }
         }
+        val ID = stringPreferencesKey("id")
         val NAME = stringPreferencesKey("name")
         val TOKEN_KEY = stringPreferencesKey("token")
         val ROLE_ID_KEY = intPreferencesKey("roleid")
         val IS_LOGGED_IN_KEY = booleanPreferencesKey("is_logged_in")
+    }
+
+    suspend fun saveId(id: String) {
+        dataStore.edit { preferences ->
+            preferences[ID] = id
+        }
     }
 
     suspend fun saveName(name: String) {
@@ -57,6 +64,10 @@ class DataStoreManager private constructor(private val dataStore: DataStore<Pref
         dataStore.edit { preferences ->
             preferences.clear()
         }
+    }
+
+    val id: Flow<String?> = dataStore.data.map { preferences ->
+        preferences[ID]
     }
 
     val name: Flow<String?> = dataStore.data.map { preferences ->

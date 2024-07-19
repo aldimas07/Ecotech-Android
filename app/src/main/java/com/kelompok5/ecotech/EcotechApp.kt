@@ -33,7 +33,7 @@ class EcotechApp : Application() {
     }
 
     private val mainModule = module {
-        viewModel { MainViewModel(get()) }
+        viewModel { MainViewModel(get(), get()) }
     }
 
     private val repositoryModule = module {

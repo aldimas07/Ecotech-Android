@@ -12,6 +12,7 @@ import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -54,9 +55,12 @@ interface ApiService {
     suspend fun getAllKolektor(
     ): GetAllKolektorResponse
 
-//    @POST("submitewaste")
-//    suspend fun createOrdersEwaste(
-//        @Body body: OrdersEwasteRequestBody
-//    ): Response<OrdersEwasteResponse>
-//
+    @Multipart
+    @POST("auth/submitewaste")
+    suspend fun createOrdersEwaste(
+        @Part("penyetor_id") penyetorId: RequestBody,
+        @Part("kolektor_id") kolektorId: RequestBody,
+        @Part image: MultipartBody.Part
+    ): Response<OrdersEwasteResponse>
+
 }

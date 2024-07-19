@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
             Log.d("LoginResponse", loginResponse.toString())
             if (loginResponse != null) {
                 lifecycleScope.launch {
+                    dataStoreManager.saveId(loginResponse.data.id)
                     dataStoreManager.saveName(loginResponse.data.name)
                     dataStoreManager.saveToken(loginResponse.data.accessToken)
                     dataStoreManager.saveLoginStatus(true)

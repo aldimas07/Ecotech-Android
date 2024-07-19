@@ -23,18 +23,19 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        dataStoreManager = DataStoreManager.getInstance(this)
-        lifecycleScope.launch {
-            val isLoggedIn = dataStoreManager.isLoggedIn.first()
-            val roleId = dataStoreManager.roleId.first()
-            Log.d("WelcomeActivity", "isLoggedIn: $isLoggedIn, roleId: $roleId")
-            if (isLoggedIn && roleId != null) {
-                navigateToHomeScreen(roleId)
-                finish() // Finish this activity to prevent back navigation
-            } else {
-                setupUi()
-            }
-        }
+        setupUi()
+//        dataStoreManager = DataStoreManager.getInstance(this)
+//        lifecycleScope.launch {
+//            val isLoggedIn = dataStoreManager.isLoggedIn.first()
+//            val roleId = dataStoreManager.roleId.first()
+//            Log.d("WelcomeActivity", "isLoggedIn: $isLoggedIn, roleId: $roleId")
+//            if (isLoggedIn && roleId != null) {
+//                navigateToHomeScreen(roleId)
+//                finish() // Finish this activity to prevent back navigation
+//            } else {
+//                setupUi()
+//            }
+//        }
 
     }
 
@@ -51,20 +52,20 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToHomeScreen(roleid: Int?) {
-        val intent = when (roleid) {
-            2 -> Intent(this, MainActivity::class.java) // Assuming roleid 2 is for Kolektor
-            3 -> Intent(this, HomeKolektorActivity::class.java) // Assuming roleid 3 is for Penyetor
-            else -> null // Default activity
-        }
-        intent?.let {
-            startActivity(it)
-            finish()
-        } ?: run {
-            // Stay in WelcomeActivity if roleid is null or invalid
-            setupUi()
-        }
-    }
+//    private fun navigateToHomeScreen(roleid: Int?) {
+//        val intent = when (roleid) {
+//            2 -> Intent(this, MainActivity::class.java) // Assuming roleid 2 is for Kolektor
+//            3 -> Intent(this, HomeKolektorActivity::class.java) // Assuming roleid 3 is for Penyetor
+//            else -> null // Default activity
+//        }
+//        intent?.let {
+//            startActivity(it)
+//            finish()
+//        } ?: run {
+//            // Stay in WelcomeActivity if roleid is null or invalid
+//            setupUi()
+//        }
+//    }
 
      override fun onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {

@@ -12,6 +12,7 @@ import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
 import com.kelompok5.ecotech.data.remote.ApiService
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 
@@ -38,9 +39,13 @@ class EcotechRepository(
         return apiService.logoutUser("Bearer $token")
     }
     suspend fun getAllKolektor() = apiService.getAllKolektor()
-//
-//    suspend fun createOrdersEwaste(ordersEwasteRequestBody: OrdersEwasteRequestBody): Response<OrdersEwasteResponse> {
-//        return apiService.createOrdersEwaste(ordersEwasteRequestBody)
-//    }
+
+    suspend fun createOrdersEwaste(
+        penyetorId: RequestBody,
+        kolektorId: RequestBody,
+        imageMultipart: MultipartBody.Part
+    ): Response<OrdersEwasteResponse> {
+        return apiService.createOrdersEwaste(penyetorId, kolektorId, imageMultipart)
+    }
 
 }

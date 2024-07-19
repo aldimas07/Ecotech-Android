@@ -10,11 +10,12 @@ data class LoginResponse(
     val statusCode: Int,
     @SerializedName("data")
     val data: userData,
-) {
-    data class userData(
-        val name: String,
-        val email: String,
-        val roleid: Int,
-        val accessToken: String,
+)
+data class userData(
+    @SerializedName("id")
+    val id: String,
+    val name: String,
+    val email: String,
+    val roleid: Int,
+    val accessToken: String,
     )
-}

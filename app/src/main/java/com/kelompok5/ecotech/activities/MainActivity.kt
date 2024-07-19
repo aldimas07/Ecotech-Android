@@ -192,6 +192,7 @@ class MainActivity : AppCompatActivity() {
                 it
             )
             currentPhotoPath = it.absolutePath
+            getUri = photoURI
             intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
             launcherIntentCamera.launch(intent)
         }
