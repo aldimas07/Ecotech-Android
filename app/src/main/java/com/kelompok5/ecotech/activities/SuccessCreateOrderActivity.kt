@@ -18,7 +18,7 @@ class SuccessCreateOrderActivity : AppCompatActivity() {
 
         binding.btnKembaliSuccessorder.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java ))
-            finishAffinity()
+            finish()
         }
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.kelompok5.ecotech.R
 import com.kelompok5.ecotech.databinding.ActivityResultBinding
 
@@ -18,32 +20,37 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getUri = Uri.parse(intent.getStringExtra(EXTRA_URI))
-
-        binding.tvHasil.text = "Bisa Didaur Ulang"
-        binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
-        binding.btnLokasi.setOnClickListener {
-            navigateToListKolektorActivity()
-        }
+        val uriString = intent.getStringExtra(EXTRA_URI)
+        getUri = if (uriString != null) Uri.parse(uriString) else null
 
         val prediction = intent.getStringExtra(EXTRA_PREDICT)
 
+        if (getUri == null) {
+            Log.e("ResultActivity", "Received null URI")
+            Toast.makeText(this, "Invalid image URI", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
-//        if (prediction == "This is an e-waste, you can send it to the collector!") {
-//            binding.tvHasil.text = "Bisa Didaur Ulang"
-//            binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
-//            binding.btnLokasi.setOnClickListener {
-//                startActivity(Intent(Intent(this, ListKolektorActivity::class.java)))
-//            }
-//        } else {
-//            binding.tvHasil.text = "Tidak Bisa Didaur Ulang"
-//            binding.tvPerintah.text = "Maaf, sistem tidak dapat mendeteksi. Silakan ubah angle fotonya atau cari e-waste lain!"
-//            binding.ivTrue.setImageResource(R.drawable.close)
-//            binding.btnLokasi.text = "Kembali"
-//            binding.btnLokasi.setOnClickListener {
-//                finish()
-//            }
-//        }
+        Log.d("ResultActivity", "URI received: $getUri")
+        Log.d("ResultActivity", "Prediction received: $prediction")
+
+        if (prediction == "This is an e-waste, you can send it to the collector!") {
+            binding.tvHasil.text = "Bisa Didaur Ulang"
+            binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
+            binding.btnLokasi.setOnClickListener {
+                navigateToListKolektorActivity()
+            }
+        } else {
+            binding.tvHasil.text = "Tidak Bisa Didaur Ulang"
+            binding.tvPerintah.text = "Maaf, sistem tidak dapat mendeteksi. Mohon ubah angle fotonya atau cari e-waste lain!"
+            binding.ivTrue.setImageResource(R.drawable.close)
+            binding.btnLokasi.text = "Kembali"
+            binding.btnLokasi.setOnClickListener {
+                finish()
+                finishAndRemoveTask()
+            }
+        }
 
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
@@ -52,9 +59,14 @@ class ResultActivity : AppCompatActivity() {
 
     private fun navigateToListKolektorActivity() {
         val intent = Intent(this, ListKolektorActivity::class.java)
-        intent.putExtra(ListKolektorActivity.EXTRA_IMAGE_URI, getUri.toString())
-        intent.putExtra(ListKolektorActivity.EXTRA_PENYETOR_ID, penyetorId)
-        startActivity(intent)
+        getUri?.let { uri ->
+            intent.putExtra(ListKolektorActivity.EXTRA_IMAGE_URI, uri.toString())
+            intent.putExtra(ListKolektorActivity.EXTRA_PENYETOR_ID, penyetorId)
+            startActivity(intent)
+        }  ?: run {
+            Log.e("ResultActivity", "Cannot navigate, URI is null")
+            Toast.makeText(this, "Invalid image URI", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

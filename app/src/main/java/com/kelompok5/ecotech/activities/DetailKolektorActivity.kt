@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -34,6 +35,16 @@ class DetailKolektorActivity : AppCompatActivity() {
 
         dataStoreManager = DataStoreManager.getInstance(this)
 
+        val uriString = intent.getStringExtra(EXTRA_IMAGE_URI)
+        val imageUri = if (uriString != null) Uri.parse(uriString) else null
+
+        if (imageUri == null) {
+            Log.e("DetailKolektorActivity", "Received null image URI")
+            Toast.makeText(this, "Invalid image URI", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
         val btnSerahkan = findViewById<Button>(R.id.btnSerahkan)
         val kolektor = intent.getParcelableExtra<allKolektor>("kolektor")
 
@@ -45,6 +56,10 @@ class DetailKolektorActivity : AppCompatActivity() {
         }
         btnSerahkan.setOnClickListener {
             showConfirmationDialog()
+        }
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.setNavigationOnClickListener {
+            finish()
         }
     }
 

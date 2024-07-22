@@ -18,7 +18,8 @@ class AdapterListKolektor(
         fun onItemClick(kolektor: allKolektor)
     }
 
-    inner class KolektorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class KolektorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         init {
             itemView.setOnClickListener(this)
         }

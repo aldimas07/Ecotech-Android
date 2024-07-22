@@ -7,6 +7,7 @@ import com.kelompok5.ecotech.data.model.request.RegisterUserKolektorRequestBody
 import com.kelompok5.ecotech.data.model.response.kolektor.GetAllKolektorResponse
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.logout.LogoutResponse
+import com.kelompok5.ecotech.data.model.response.orders.GetOrdersEwasteByIDResponse
 import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
@@ -39,6 +40,10 @@ class EcotechRepository(
         return apiService.logoutUser("Bearer $token")
     }
     suspend fun getAllKolektor() = apiService.getAllKolektor()
+
+    suspend fun getOrdersByKolektorIdAndStatusMenunggu(kolektorId: String): GetOrdersEwasteByIDResponse {
+        return apiService.getOrderEwasteByKolektorIdAndStatusMenunggu(kolektorId)
+    }
 
     suspend fun createOrdersEwaste(
         penyetorId: RequestBody,

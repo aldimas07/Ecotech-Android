@@ -20,6 +20,7 @@ import com.kelompok5.ecotech.activities.AccountInfoActivity
 import com.kelompok5.ecotech.databinding.FragmentHomeBinding
 import com.kelompok5.ecotech.viewmodel.AuthViewModel
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,17 +42,22 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.userProfile.setOnClickListener {
-            startActivity(Intent(Intent(requireActivity(), AccountInfoActivity::class.java)))
-        }
 
         dataStoreManager = DataStoreManager.getInstance(requireContext())
 
         lifecycleScope.launch {
-            val name = dataStoreManager.name.first()
+            val name = dataStoreManager.name.firstOrNull() ?: "!"
             binding.tvGreetings.text = "Hai, ${name}!"
         }
-
+        binding.userProfile.setOnClickListener {
+            startActivity(Intent(Intent(requireActivity(), AccountInfoActivity::class.java)))
+        }
+        binding.ivTukarKredit.setOnClickListener{
+            Toast.makeText(requireContext(), "Coming soon!", Toast.LENGTH_SHORT).show()
+        }
+        binding.email.setOnClickListener{
+            Toast.makeText(requireContext(), "Coming soon!", Toast.LENGTH_SHORT).show()
+        }
         binding.settings.setOnClickListener {
             val intent = Intent(requireActivity(), AccountInfoActivity::class.java)
             startActivity(intent)
@@ -66,5 +72,9 @@ class FragmentHome : Fragment() {
                 finishAffinity(requireActivity())
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_PENYETOR_NAME = "extra_penyetor_name"
     }
 }

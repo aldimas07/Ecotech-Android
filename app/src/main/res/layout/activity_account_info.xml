@@ -63,6 +63,7 @@
                     android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="24sp" />
                 <ImageView
+                        android:id="@+id/iv_edit"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:padding="5dp"
@@ -134,6 +135,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_tukar_ep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tukar EP ke voucher"

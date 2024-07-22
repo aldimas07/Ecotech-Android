@@ -66,7 +66,10 @@ class MainActivity : AppCompatActivity() {
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, this@MainActivity)
                 getFile = myFile
+                getUri = uri
                 uploadImage()
+            } ?: run {
+                Toast.makeText(this, "Failed to get image from gallery", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -216,6 +219,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
+        const val EXTRA_PENYETOR_NAME = "extra_penyetor_name"
     }
 
     override fun onBackPressed() {
@@ -229,4 +233,6 @@ class MainActivity : AppCompatActivity() {
         }
         backPressedTime = System.currentTimeMillis()
     }
+
+
 }

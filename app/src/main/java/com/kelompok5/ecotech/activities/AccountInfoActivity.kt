@@ -49,6 +49,14 @@ class AccountInfoActivity : AppCompatActivity() {
             binding.tvNama.text = name
         }
 
+        binding.btnTukarEp.setOnClickListener{
+            Toast.makeText(this, "Coming soon!", Toast.LENGTH_SHORT).show()
+        }
+        binding.ivEdit.setOnClickListener {
+            Toast.makeText(this, "Coming soon!", Toast.LENGTH_SHORT).show()
+        }
+
+
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu1 -> {
@@ -71,6 +79,7 @@ class AccountInfoActivity : AppCompatActivity() {
                     dataStoreManager.saveLoginStatus(false)
                     dataStoreManager.saveRoleId(0)
                     dataStoreManager.saveToken("")
+                    dataStoreManager.saveName("")
 
                     Toast.makeText(this@AccountInfoActivity, "Logged out successfully", Toast.LENGTH_SHORT).show()
 
@@ -90,12 +99,12 @@ class AccountInfoActivity : AppCompatActivity() {
     }
     private fun showLogoutDialog() {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Apakah kamu mau logout?")
+        builder.setMessage("Kamu akan keluar dari akunmu")
             .setCancelable(false)
             .setPositiveButton("Iya") { dialog, id ->
                 logout()
             }
-            .setNegativeButton("Nggak") { dialog, id ->
+            .setNegativeButton("Batalkan") { dialog, id ->
                 dialog.dismiss()
             }
         val alert = builder.create()

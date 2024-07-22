@@ -2,6 +2,7 @@ package com.kelompok5.ecotech.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kelompok5.ecotech.databinding.ActivityLupaPasswordBinding
 
@@ -16,7 +17,7 @@ class LupaPasswordActivity : AppCompatActivity() {
             finish()
         }
         binding.btnKirimLupapassword.setOnClickListener {
-            startActivity(Intent(this, EmailTerkirimLupaPasswordActivity::class.java))
+            Toast.makeText(this, "Coming soon!", Toast.LENGTH_SHORT).show()
         }
     }
 }

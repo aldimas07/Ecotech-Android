@@ -8,6 +8,7 @@ import com.kelompok5.ecotech.data.model.response.kolektor.GetAllKolektorResponse
 import com.kelompok5.ecotech.data.model.response.kolektor.allKolektor
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.logout.LogoutResponse
+import com.kelompok5.ecotech.data.model.response.orders.GetOrdersEwasteByIDResponse
 import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
@@ -23,6 +24,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -55,6 +57,11 @@ interface ApiService {
     suspend fun getAllKolektor(
     ): GetAllKolektorResponse
 
+    @GET("orders/status/menunggu")
+    suspend fun getOrderEwasteByKolektorIdAndStatusMenunggu(
+        @Query("kolektor_id") kolektorId: String
+    ): GetOrdersEwasteByIDResponse
+
     @Multipart
     @POST("auth/submitewaste")
     suspend fun createOrdersEwaste(
@@ -62,5 +69,4 @@ interface ApiService {
         @Part("kolektor_id") kolektorId: RequestBody,
         @Part image: MultipartBody.Part
     ): Response<OrdersEwasteResponse>
-
 }
