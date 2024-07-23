@@ -18,5 +18,5 @@
     <color name="textColorPrimary">@color/black</color>
     <color name="textColorPrimaryInverse">@color/white</color>
     <color name="textColorSecondary">#BDBDBD</color>
-    <color name="colorContainer">#dbdbdb</color>
+    <color name="colorContainer">#EBEBEB</color>
 </resources>

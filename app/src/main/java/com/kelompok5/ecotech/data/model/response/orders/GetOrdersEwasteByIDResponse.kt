@@ -3,7 +3,6 @@ package com.kelompok5.ecotech.data.model.response.orders
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.kelompok5.ecotech.data.model.response.kolektor.allKolektor
 
 data class GetOrdersEwasteByIDResponse(
     @SerializedName("statusCode")
@@ -15,6 +14,7 @@ data class GetOrdersEwasteByIDResponse(
 )
 
 data class orderDataByID(
+    val id: String,
     val penyetor_id: String,
     val penyetor_name: String,
     val item_image: String,
@@ -26,11 +26,13 @@ data class orderDataByID(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readString() ?: ""
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
         parcel.writeString(penyetor_id)
         parcel.writeString(penyetor_name)
         parcel.writeString(item_image)

@@ -78,11 +78,13 @@ class LoginActivity : AppCompatActivity() {
                     val Intent = Intent(this, HomeKolektorActivity::class.java)
                     intent.putExtra(HomeKolektorActivity.EXTRA_KOLEKTOR_NAME, loginResponse.data.name)
                     startActivity(Intent)
+                    finish()
                 } else if (loginResponse.data.roleid == 2){
                     Toast.makeText(this, "Login Penyetor success!", Toast.LENGTH_SHORT).show()
                     val Intent = Intent(this, MainActivity::class.java)
                     intent.putExtra(MainActivity.EXTRA_PENYETOR_NAME, loginResponse.data.name)
                     startActivity(Intent)
+                    finish()
                 } else {
                     Toast.makeText(this, "Login ditolak.", Toast.LENGTH_SHORT).show()
                 }

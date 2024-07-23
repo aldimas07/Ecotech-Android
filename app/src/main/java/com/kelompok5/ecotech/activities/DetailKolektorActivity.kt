@@ -57,10 +57,6 @@ class DetailKolektorActivity : AppCompatActivity() {
         btnSerahkan.setOnClickListener {
             showConfirmationDialog()
         }
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
     }
 
     private fun showConfirmationDialog() {

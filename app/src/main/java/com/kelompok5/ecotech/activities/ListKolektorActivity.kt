@@ -11,7 +11,6 @@ import com.kelompok5.ecotech.DataStoreManager
 import com.kelompok5.ecotech.R
 import com.kelompok5.ecotech.adapter.AdapterListKolektor
 import com.kelompok5.ecotech.data.model.response.kolektor.allKolektor
-import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.remote.ApiService
 import com.kelompok5.ecotech.data.remote.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
@@ -41,10 +40,6 @@ class ListKolektorActivity : AppCompatActivity(), AdapterListKolektor.OnItemClic
         adapter = AdapterListKolektor(mutableListOf(), this)
         recyclerView.adapter = adapter
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
 
         dataStoreManager = DataStoreManager.getInstance(this)
 

@@ -10,6 +10,7 @@ import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.logout.LogoutResponse
 import com.kelompok5.ecotech.data.model.response.orders.GetOrdersEwasteByIDResponse
 import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
+import com.kelompok5.ecotech.data.model.response.orders.UpdateStatusOrdersResponse
 import com.kelompok5.ecotech.data.model.response.predict.PredictResponse
 import com.kelompok5.ecotech.data.model.response.register.RegisterResponse
 import okhttp3.MultipartBody
@@ -69,4 +70,10 @@ interface ApiService {
         @Part("kolektor_id") kolektorId: RequestBody,
         @Part image: MultipartBody.Part
     ): Response<OrdersEwasteResponse>
+
+    @PUT("setor/accept/{id}")
+    suspend fun updateStatusOrderEwasteAccepted(@Path("id") id: String): Response<UpdateStatusOrdersResponse>
+
+    @PUT("setor/reject/{id}")
+    suspend fun updateStatusOrderEwasteRejected(@Path("id") id: String): Response<UpdateStatusOrdersResponse>
 }

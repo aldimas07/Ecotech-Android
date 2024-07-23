@@ -46,8 +46,12 @@ class FragmentHome : Fragment() {
         dataStoreManager = DataStoreManager.getInstance(requireContext())
 
         lifecycleScope.launch {
-            val name = dataStoreManager.name.firstOrNull() ?: "!"
-            binding.tvGreetings.text = "Hai, ${name}!"
+            val name = dataStoreManager.name.firstOrNull()
+            if (name.isNullOrEmpty()) {
+                binding.tvGreetings.text = "Selamat datang!"
+            } else {
+                binding.tvGreetings.text = "Halo, $name!"
+            }
         }
         binding.userProfile.setOnClickListener {
             startActivity(Intent(Intent(requireActivity(), AccountInfoActivity::class.java)))

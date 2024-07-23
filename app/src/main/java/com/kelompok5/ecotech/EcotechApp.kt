@@ -8,6 +8,7 @@ import com.kelompok5.ecotech.data.remote.RetrofitClient
 import com.kelompok5.ecotech.data.repository.EcotechRepository
 import com.kelompok5.ecotech.viewmodel.AuthViewModel
 import com.kelompok5.ecotech.viewmodel.MainViewModel
+import com.kelompok5.ecotech.viewmodel.OrderViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -24,7 +25,7 @@ class EcotechApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@EcotechApp)
-            modules(authModule, mainModule, repositoryModule)
+            modules(authModule, mainModule, repositoryModule, orderModule)
         }
     }
 
@@ -34,6 +35,9 @@ class EcotechApp : Application() {
 
     private val mainModule = module {
         viewModel { MainViewModel(get(), get()) }
+    }
+    private val orderModule = module {
+        viewModel { OrderViewModel(get(), get())}
     }
 
     private val repositoryModule = module {

@@ -28,8 +28,8 @@ class AdapterListPenyetorByKolektorId(
         fun bind(penyetor: orderDataByID) {
             val tvNamaPenyetor: TextView = itemView.findViewById(R.id.tvNamaPenyetor)
             val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
-            tvNamaPenyetor.text = penyetor.penyetor_name
-            tvStatus.text = penyetor.status
+            tvNamaPenyetor.text = "Nama Penyetor: ${penyetor.penyetor_name}"
+            tvStatus.text = "Status: ${penyetor.status}"
         }
 
         override fun onClick(v: View?) {

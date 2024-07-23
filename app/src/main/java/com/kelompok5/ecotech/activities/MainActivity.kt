@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     private var backPressedTime: Long = 0
     private lateinit var toast : Toast
 
+    private var customDialog: Dialog? = null
+
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -150,27 +152,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDialogFab() {
-        val customDialog = Dialog(this)
-        customDialog.setContentView(R.layout.dialog_fab)
-        customDialog.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        customDialog.window?.setBackgroundDrawableResource(R.color.transparent)
-        customDialog.setCancelable(true)
-        val kamera = customDialog.findViewById<LinearLayout>(R.id.kamera)
-        val galeri = customDialog.findViewById<LinearLayout>(R.id.galeri)
-        kamera.setOnClickListener {
-            // Buka Kamera
-            startTakePhoto()
-            customDialog.hide()
+        // Inisialisasi customDialog jika belum ada
+        if (customDialog == null) {
+            customDialog = Dialog(this)
         }
-        galeri.setOnClickListener {
-            // Buka Galeri
-            startGallery()
-            customDialog.hide()
+
+        customDialog?.apply {
+            setContentView(R.layout.dialog_fab)
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            window?.setBackgroundDrawableResource(R.color.transparent)
+            setCancelable(true)
+
+            val kamera = findViewById<LinearLayout>(R.id.kamera)
+            val galeri = findViewById<LinearLayout>(R.id.galeri)
+
+            kamera.setOnClickListener {
+                // Buka Kamera
+                startTakePhoto()
+                dismiss() // Gunakan dismiss() untuk menghapus dialog
+            }
+            galeri.setOnClickListener {
+                // Buka Galeri
+                startGallery()
+                dismiss() // Gunakan dismiss() untuk menghapus dialog
+            }
+
+            show()
         }
-        customDialog.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        customDialog?.dismiss()
     }
 
     private fun observePrediction() {
