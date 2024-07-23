@@ -58,10 +58,16 @@ interface ApiService {
     suspend fun getAllKolektor(
     ): GetAllKolektorResponse
 
-    @GET("orders/status/menunggu")
+    @GET("orders/status/id/menunggu")
     suspend fun getOrderEwasteByKolektorIdAndStatusMenunggu(
         @Query("kolektor_id") kolektorId: String
     ): GetOrdersEwasteByIDResponse
+
+    @GET("orders/status/id/all")
+    suspend fun getAllStatusOrderEwasteByKolektorId(
+        @Query("kolektor_id") kolektorId: String
+    ): GetOrdersEwasteByIDResponse
+
 
     @Multipart
     @POST("auth/submitewaste")

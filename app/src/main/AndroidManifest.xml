@@ -35,6 +35,9 @@
             android:theme="@style/Theme.EcoTech"
             tools:targetApi="31">
         <activity
+                android:name=".activities.HistoryOrderPenyetorPageActivity"
+                android:exported="false" />
+        <activity
                 android:name=".activities.DetailPenyetorActivity"
                 android:exported="false" />
         <activity
