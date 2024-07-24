@@ -9,7 +9,9 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -34,6 +36,7 @@ import java.io.File
 class MainActivity : AppCompatActivity() {
     private var getFile: File? = null
     private var getUri: Uri? = null
+    private var penyetorId: String? = null
 
     private var backPressedTime: Long = 0
     private lateinit var toast : Toast
@@ -86,6 +89,7 @@ class MainActivity : AppCompatActivity() {
                 file.name,
                 requestImageFile
             )
+            showFilterDialog()
             mainViewModel.predict(imageMultipart)
         } else {
             Toast.makeText(
@@ -148,8 +152,57 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        observePrediction()
+//        observePrediction()
     }
+
+    private fun showFilterDialog() {
+        val dialog = Dialog(this)
+        dialog.apply {
+            setContentView(R.layout.dialog_filter_confirmation)
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            window?.setBackgroundDrawableResource(R.color.transparent)
+            setCancelable(true)
+
+            val btnYes = findViewById<Button>(R.id.btnYes)
+            val btnNo = findViewById<Button>(R.id.btnNo)
+
+            btnYes.setOnClickListener {
+                mainViewModel.prediction.observe(this@MainActivity) { predictionResponse ->
+                    if (predictionResponse != null) {
+                        val intent = Intent(this@MainActivity, ResultActivity::class.java)
+                        intent.putExtra(ResultActivity.EXTRA_PREDICT, predictionResponse.prediction)
+                        intent.putExtra(ResultActivity.EXTRA_URI, getUri.toString())
+                        startActivity(intent)
+                        dialog.dismiss()
+                    }
+                }
+//                val intent = Intent(this@MainActivity, ResultActivity::class.java)
+//                intent.putExtra(ResultActivity.EXTRA_PREDICT, mainViewModel.prediction.value?.prediction)
+//                intent.putExtra(ResultActivity.EXTRA_URI, getUri.toString())
+//                startActivity(intent)
+//                dialog.dismiss()
+            }
+
+            btnNo.setOnClickListener {
+                val intent = Intent(this@MainActivity, ListKolektorActivity::class.java)
+                intent.putExtra(ResultActivity.EXTRA_URI, getUri.toString())
+                getUri?.let { uri ->
+                    intent.putExtra(ListKolektorActivity.EXTRA_IMAGE_URI, uri.toString())
+                    intent.putExtra(ListKolektorActivity.EXTRA_PENYETOR_ID, penyetorId)
+                    startActivity(intent)
+                    dialog.dismiss()
+                }  ?: run {
+                    Log.e("ResultActivity", "Cannot navigate, URI is null")
+                }
+            }
+
+            show()
+        }
+    }
+
 
     private fun showDialogFab() {
         // Inisialisasi customDialog jika belum ada
@@ -236,6 +289,8 @@ class MainActivity : AppCompatActivity() {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
         const val EXTRA_PENYETOR_NAME = "extra_penyetor_name"
+        const val EXTRA_PREDICT = "extra_predict"
+        const val EXTRA_URI = "extra_uri"
     }
 
     override fun onBackPressed() {

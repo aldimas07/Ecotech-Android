@@ -8,6 +8,7 @@ import com.kelompok5.ecotech.data.model.response.kolektor.GetAllKolektorResponse
 import com.kelompok5.ecotech.data.model.response.kolektor.allKolektor
 import com.kelompok5.ecotech.data.model.response.login.LoginResponse
 import com.kelompok5.ecotech.data.model.response.logout.LogoutResponse
+import com.kelompok5.ecotech.data.model.response.orders.GetOrdersByIDPenyetorResponse
 import com.kelompok5.ecotech.data.model.response.orders.GetOrdersEwasteByIDResponse
 import com.kelompok5.ecotech.data.model.response.orders.OrdersEwasteResponse
 import com.kelompok5.ecotech.data.model.response.orders.UpdateStatusOrdersResponse
@@ -63,10 +64,15 @@ interface ApiService {
         @Query("kolektor_id") kolektorId: String
     ): GetOrdersEwasteByIDResponse
 
-    @GET("orders/status/id/all")
+    @GET("orders/status/id/kolektor/all")
     suspend fun getAllStatusOrderEwasteByKolektorId(
         @Query("kolektor_id") kolektorId: String
     ): GetOrdersEwasteByIDResponse
+
+    @GET("orders/status/id/penyetor/all")
+    suspend fun getAllStatusOrderEwasteByPenyetorId(
+        @Query("penyetor_id") penyetorId: String
+    ): GetOrdersByIDPenyetorResponse
 
 
     @Multipart

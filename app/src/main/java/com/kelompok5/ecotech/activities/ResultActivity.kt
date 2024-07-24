@@ -31,30 +31,30 @@ class ResultActivity : AppCompatActivity() {
             finish()
             return
         }
-        binding.tvHasil.text = "Bisa Didaur Ulang"
-        binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
-        binding.btnLokasi.setOnClickListener {
-            navigateToListKolektorActivity()
-        }
+//        binding.tvHasil.text = "Bisa Didaur Ulang"
+//        binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
+//        binding.btnLokasi.setOnClickListener {
+//            navigateToListKolektorActivity()
+//        }
 
         Log.d("ResultActivity", "URI received: $getUri")
         Log.d("ResultActivity", "Prediction received: $prediction")
 
-//        if (prediction == "This is an e-waste, you can send it to the collector!") {
-//            binding.tvHasil.text = "Bisa Didaur Ulang"
-//            binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
-//            binding.btnLokasi.setOnClickListener {
-//                navigateToListKolektorActivity()
-//            }
-//        } else {
-//            binding.tvHasil.text = "Tidak Bisa Didaur Ulang"
-//            binding.tvPerintah.text = "Maaf, sistem tidak dapat mendeteksi. Mohon ubah angle fotonya atau cari e-waste lain!"
-//            binding.ivTrue.setImageResource(R.drawable.close)
-//            binding.btnLokasi.text = "Kembali"
-//            binding.btnLokasi.setOnClickListener {
-//                finish()
-//            }
-//        }
+        if (prediction == "This is an e-waste, you can send it to the collector!") {
+            binding.tvHasil.text = "Bisa Didaur Ulang"
+            binding.tvPerintah.text = "Yay! Sampah bisa didaur ulang. \n Yuk, kumpulkan ke pengepulan terdekat!"
+            binding.btnLokasi.setOnClickListener {
+                navigateToListKolektorActivity()
+            }
+        } else {
+            binding.tvHasil.text = "Tidak Bisa Didaur Ulang"
+            binding.tvPerintah.text = "Maaf, sistem tidak dapat mendeteksi. Mohon ubah angle fotonya atau cari e-waste lain!"
+            binding.ivTrue.setImageResource(R.drawable.close)
+            binding.btnLokasi.text = "Kembali"
+            binding.btnLokasi.setOnClickListener {
+                finish()
+            }
+        }
 
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
@@ -76,6 +76,14 @@ class ResultActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish()
     }
 
     companion object {

@@ -105,6 +105,7 @@
 
 
                         <ImageView
+                                android:id="@+id/ivRiwayatPenyetor"
                             android:layout_width="68dp"
                             android:layout_height="68dp"
                             android:background="@drawable/background_points"

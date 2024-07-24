@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat.finishAffinity
@@ -16,7 +17,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.kelompok5.ecotech.DataStoreManager
 import com.kelompok5.ecotech.EcotechApp
+import com.kelompok5.ecotech.R
 import com.kelompok5.ecotech.activities.AccountInfoActivity
+import com.kelompok5.ecotech.activities.HistoryOrderKolektorPageActivity
+import com.kelompok5.ecotech.activities.HistoryOrderPenyetorPageActivity
 import com.kelompok5.ecotech.databinding.FragmentHomeBinding
 import com.kelompok5.ecotech.viewmodel.AuthViewModel
 import kotlinx.coroutines.flow.first
@@ -56,6 +60,10 @@ class FragmentHome : Fragment() {
         binding.userProfile.setOnClickListener {
             startActivity(Intent(Intent(requireActivity(), AccountInfoActivity::class.java)))
         }
+        binding.ivRiwayatPenyetor.setOnClickListener {
+            val intent = Intent(requireActivity(), HistoryOrderKolektorPageActivity::class.java)
+            startActivity(intent)
+        }
         binding.ivTukarKredit.setOnClickListener{
             Toast.makeText(requireContext(), "Coming soon!", Toast.LENGTH_SHORT).show()
         }
@@ -79,6 +87,7 @@ class FragmentHome : Fragment() {
     }
 
     companion object {
+        const val EXTRA_PENYETOR_ID = "extra_penyetor_id"
         const val EXTRA_PENYETOR_NAME = "extra_penyetor_name"
     }
 }

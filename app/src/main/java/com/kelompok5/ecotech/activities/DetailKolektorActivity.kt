@@ -105,6 +105,14 @@ class DetailKolektorActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish()
+    }
+
     companion object {
         const val EXTRA_PENYETOR_ID = "extra_penyetor_id"
         const val EXTRA_KOLEKTOR_ID = "extra_kolektor_id"
